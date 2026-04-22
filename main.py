@@ -14,7 +14,8 @@ from agents import (
     SQLiteSession,
     function_tool, 
     RunContextWrapper,
-    InputGuardrailTripwireTriggered
+    InputGuardrailTripwireTriggered,
+    OutputGuardrailTripwireTriggered
 )
 
 from models import CustomerAccountContext
@@ -87,6 +88,8 @@ async def run_agent(message):
         except InputGuardrailTripwireTriggered:
             text_placeholder.write("I cannot help with this request.")
 
+        except OutputGuardrailTripwireTriggered:
+            text_placeholder.write("This request is denied.")
 
 message = st.chat_input("Please write a message for your assistant for our restaurant. Thank you for choosing us.")
 

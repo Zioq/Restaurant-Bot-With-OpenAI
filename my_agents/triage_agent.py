@@ -7,6 +7,8 @@ from models import CustomerAccountContext, GuardrailDecision, HandoffData
 from my_agents.menu_agent import menu_agent
 from my_agents.order_agent import order_agent
 from my_agents.reservation_agent import reservation_agent
+from output_guardrails import triage_output_guardrail
+from my_agents.complain_agent import compalin_agent
 
 
 input_guardrail_agent = Agent(
@@ -241,5 +243,7 @@ triage_agent = Agent(
         make_handoff(menu_agent, "transfer_to_menu_agent"),
         make_handoff(order_agent, "transfer_to_order_agent"),
         make_handoff(reservation_agent, "transfer_to_reservation_agent"),
+        make_handoff(compalin_agent, "transfer_to_complain_agent"),
     ],
+    output_guardrails= [triage_output_guardrail]
 )

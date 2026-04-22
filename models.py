@@ -17,3 +17,8 @@ class HandoffData(BaseModel):
     issue_type: str
     issue_description: str
     reason: str
+
+class TriageOutputGuardRailOutput(BaseModel):
+    contains_off_topic: bool
+    contains_credential: bool
+    reason: str
